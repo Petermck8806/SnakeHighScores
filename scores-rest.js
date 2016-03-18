@@ -21,33 +21,6 @@ api.get('/scores', function(req,res){
   });
 });
 
-//POST /scores
-//insert one score
-api.post('/scores', function(req,res){
-  console.log('POST/scores');
-  console.log(req.body);
-  console.log(req.get('Content-Type'));
-
-  if(req.get('Content-Type') != 'application/json'){
-    console.log('406 not acceptable.');
-    res.status(406);
-    res.end();
-  }
-
-  var score = req.body; 
-
-  if(score == undefined){
-    res.status(406);
-    res.end();
-  }
-
-  db.run("INSERT INTO score (value, user, created_date) VALUES (?,?,?)",
-    score.value, score.user, score.created_date); 
-
-  res.status(202);
-  res.end();
-});
-
 //POST /allscores
 //post all of the scores. This will truncate the scores table and insert new scores.
 api.post('/allscores', function(req, res){

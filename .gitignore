@@ -48,3 +48,6 @@ Temporary Items
 
 #database
 *.db
+
+#node modules
+*node_modules
